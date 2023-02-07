@@ -27,6 +27,7 @@ namespace RPGHeroes.Attributes
         {
             if (Type == heroAttribute.Type) { Type += heroAttribute.Value; }
             else { throw new ArgumentException(); }
+
         }
     }
 }
