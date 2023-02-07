@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace RPGHeroes.Characters
 {
-    internal class Rogue: Character
+    internal class Rogue: Hero
     {
         private int baseStrength = 2;
         private int baseDexterity = 6;

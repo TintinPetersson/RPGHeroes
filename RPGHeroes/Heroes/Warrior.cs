@@ -7,16 +7,16 @@ using System.Xml.Linq;
 
 namespace RPGHeroes.Characters
 {
-    internal class Ranger: Character
+    internal class Warrior: Hero
     {
-        private int baseStrength = 1;
-        private int baseDexterity = 7;
+        private int baseStrength = 5;
+        private int baseDexterity = 2;
         private int baseIntelligence = 1;
 
-        public Ranger(string name)
+        public Warrior(string name)
         {
             Name = name;
-            CharacterCLass = "Ranger";
+            CharacterCLass = "Warrior";
         }
     }
 }
