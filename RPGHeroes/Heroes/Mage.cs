@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.Characters
 {
-    internal class Mage: Character
+    internal class Mage: Hero
     {
         private int baseStrength = 1;
         private int baseDexterity = 1;
