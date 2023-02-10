@@ -25,9 +25,21 @@ namespace RPGHeroes.Attributes
 
         public void Add(HeroAttribute heroAttribute)
         {
-            if (Type == heroAttribute.Type) { Type += heroAttribute.Value; }
-            else { throw new ArgumentException(); }
+            if (this.Type == heroAttribute.Type)
+            {
+                this.Value += heroAttribute.Value;
+            }
+            else
+            {
+                throw new ArgumentException();
+            }
 
         }
+        public HeroAttribute(HeroAttribute copy)
+        {
+            Type = copy.Type;
+            Value = copy.Value;
+        }
+
     }
 }

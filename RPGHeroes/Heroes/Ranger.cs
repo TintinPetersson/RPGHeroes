@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace RPGHeroes.Characters
+namespace RPGHeroes.Heroes
 {
     internal class Ranger: Hero
     {
@@ -13,10 +13,19 @@ namespace RPGHeroes.Characters
         private int baseDexterity = 7;
         private int baseIntelligence = 1;
 
+        private int strengthOnLevelUp = 1;
+        private int dexterityOnLevelUp = 5;
+        private int intelligenceOnLevelUp = 1;
+
         public Ranger(string name)
         {
             Name = name;
             CharacterCLass = "Ranger";
+        }
+
+        public override string PrintInfo()
+        {
+            return $"Hero Name: ~ {Name} ~ \nHero Class: {CharacterCLass}";
         }
     }
 }
