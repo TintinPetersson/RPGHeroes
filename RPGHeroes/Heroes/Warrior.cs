@@ -25,9 +25,18 @@ namespace RPGHeroes.Heroes
             CharacterClass = "Warrior";
 
             TotalAttributes = new HeroAttribute { Strength = baseStrength, Dexterity = baseDexterity, Intelligence = baseIntelligence };
-            LevelUpAttributes = new HeroAttribute { Strength = strengthOnLevelUp, Dexterity = dexterityOnLevelUp, Intelligence = intelligenceOnLevelUp };
             EligibleWeapons = new WeaponType[] { WeaponType.Axe, WeaponType.Hammer, WeaponType.Sword };
             EligibleArmors = new ArmorType[] { ArmorType.Mail, ArmorType.Plate };
+            Equipment = new Dictionary<Slot, Item> { { Slot.Weapon, new Weapon() }, { Slot.Body, new Armor() }, { Slot.Head, new Armor() }, { Slot.Legs, new Armor() }, };
+        }
+        public override void LevelUp()
+        {
+            Level++;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Congratulations {Name}.\nYou reached Level {Level}!\n");
+            Console.ResetColor();
+
+            TotalAttributes.UpdateTotalAttributes(strengthOnLevelUp, dexterityOnLevelUp, intelligenceOnLevelUp);
         }
     }
 }
