@@ -11,7 +11,7 @@ namespace RPGHeroes.HeroAttributes
     {
         public List<HeroAttribute> Attributes { get; set; } = new List<HeroAttribute>();
 
-        public HeroSetAttribute(int strength, int dexterity, int intelligence) 
+        public HeroSetAttribute(int strength, int dexterity, int intelligence)
         {
             Attributes.Add(new HeroAttribute(HeroAttributeType.Strength, strength));
             Attributes.Add(new HeroAttribute(HeroAttributeType.Dexterity, dexterity));
@@ -23,9 +23,9 @@ namespace RPGHeroes.HeroAttributes
             Attributes = new List<HeroAttribute>(copy.Attributes);
         }
 
-        public void Add(HeroSetAttribute append)
+        public int GetAttributeValue(HeroAttributeType type)
         {
-            //Attributes = new List<HeroAttribute>(Attributes.Zip(append.Attributes, (attr1, attr2) => attr1 + attr2));
+            return Attributes.Find(attr => attr.Type == type).Value;
         }
     }
 }

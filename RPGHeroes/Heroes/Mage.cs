@@ -22,7 +22,8 @@ namespace RPGHeroes.Heroes
         public Mage(string name)
         {
             Name = name;
-            CharacterCLass = "Mage";
+            CharacterClass = "Mage";
+
 
             PrimaryAttribute = HeroAttributeType.Intelligence;
             BaseAttributes = new HeroSetAttribute( baseStrength, baseDexterity, baseIntelligence);
@@ -30,11 +31,6 @@ namespace RPGHeroes.Heroes
             LevelUpAttributes = new HeroSetAttribute(strengthOnLevelUp, dexterityOnLevelUp, intelligenceOnLevelUp);
             EligibleWeapons = new WeaponType[] { WeaponType.Staff, WeaponType.Wand };
             EligibleArmors = new ArmorType[] { ArmorType.Cloth };
-        }
-
-        public override string PrintInfo()
-        {
-            return $"Hero Name: ~ {Name} ~ \nHero Class: {CharacterCLass}\nLevel: {Level} \nAttributes: {TotalAttributes.Attributes[0].Type}";
         }
     }
 }

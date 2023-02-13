@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RPGHeroes.Attributes;
+using RPGHeroes.HeroAttributes;
+using RPGHeroes.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +23,14 @@ namespace RPGHeroes.Heroes
         public Rogue(string name)
         {
             Name = name;
-            CharacterCLass = "Rogue";
-        }
+            CharacterClass = "Rogue";
 
-        public override string PrintInfo()
-        {
-            return $"Hero Name: ~ {Name} ~ \nHero Class: {CharacterCLass}";
+            PrimaryAttribute = HeroAttributeType.Intelligence;
+            BaseAttributes = new HeroSetAttribute(baseStrength, baseDexterity, baseIntelligence);
+            TotalAttributes = new HeroSetAttribute(BaseAttributes);
+            LevelUpAttributes = new HeroSetAttribute(strengthOnLevelUp, dexterityOnLevelUp, intelligenceOnLevelUp);
+            EligibleWeapons = new WeaponType[] { WeaponType.Dagger, WeaponType.Sword };
+            EligibleArmors = new ArmorType[] { ArmorType.Leather, ArmorType.Mail };
         }
     }
 }

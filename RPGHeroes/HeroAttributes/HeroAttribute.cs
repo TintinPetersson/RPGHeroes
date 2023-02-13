@@ -15,7 +15,7 @@ namespace RPGHeroes.Attributes
     internal class HeroAttribute
     {
         public HeroAttributeType Type { get; set; }
-        public int Value { get; set; }
+        public int Value { get; set; } = 0;
 
         public HeroAttribute(HeroAttributeType type, int value)
         {
@@ -23,23 +23,10 @@ namespace RPGHeroes.Attributes
             Value = value;
         }
 
-        public void Add(HeroAttribute heroAttribute)
-        {
-            if (this.Type == heroAttribute.Type)
-            {
-                this.Value += heroAttribute.Value;
-            }
-            else
-            {
-                throw new ArgumentException();
-            }
-
-        }
         public HeroAttribute(HeroAttribute copy)
         {
             Type = copy.Type;
             Value = copy.Value;
         }
-
     }
 }

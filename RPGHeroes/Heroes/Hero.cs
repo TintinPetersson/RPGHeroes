@@ -13,19 +13,35 @@ namespace RPGHeroes.Heroes
     {
         public int Level { get; private set; } = 1;
         protected string Name { get; set; }
-        protected string CharacterCLass { get; set; }
-        public HeroSetAttribute BaseAttributes { get; protected set; }
-        public HeroSetAttribute TotalAttributes { get; protected set; }
+        protected string CharacterClass { get; set; }
+        protected HeroSetAttribute BaseAttributes { get; set; }
+        protected HeroSetAttribute TotalAttributes { get; set; }
         protected HeroSetAttribute LevelUpAttributes { get; set; }
         protected HeroAttributeType PrimaryAttribute { get; set; }
         public WeaponType[] EligibleWeapons { get; set; }
         public ArmorType[] EligibleArmors { get; set; }
 
-        public abstract string PrintInfo();
         public void LevelUp()
         {
             Level++;
-            BaseAttributes.Add(LevelUpAttributes);
+            UpdateTotalAttributes();
+        }
+        private void UpdateTotalAttributes()
+        {
+            for (int i = 0; i < TotalAttributes.Attributes.Count; i++)
+            {
+                TotalAttributes.Attributes[i].Value += LevelUpAttributes.Attributes[i].Value;
+            }
+        }
+        public override string ToString()
+        {
+            return
+                $"Name: {Name}\n" +
+                $"Level: {Level}\n" +
+                $"Class: {CharacterClass}\n" +
+                $"Strength: {TotalAttributes.GetAttributeValue(HeroAttributeType.Strength)}\n" +
+                $"Dexterity: {TotalAttributes.GetAttributeValue(HeroAttributeType.Dexterity)}\n" +
+                $"Intelligence: {TotalAttributes.GetAttributeValue(HeroAttributeType.Intelligence)}\n";
         }
     }
 }
