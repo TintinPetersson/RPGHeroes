@@ -1,5 +1,4 @@
 ﻿using RPGHeroes.Attributes;
-using RPGHeroes.HeroAttributes;
 using RPGHeroes.Items;
 using System;
 using System.Collections.Generic;
@@ -25,10 +24,8 @@ namespace RPGHeroes.Heroes
             CharacterClass = "Mage";
 
 
-            PrimaryAttribute = HeroAttributeType.Intelligence;
-            BaseAttributes = new HeroSetAttribute( baseStrength, baseDexterity, baseIntelligence);
-            TotalAttributes = new HeroSetAttribute(BaseAttributes);
-            LevelUpAttributes = new HeroSetAttribute(strengthOnLevelUp, dexterityOnLevelUp, intelligenceOnLevelUp);
+            TotalAttributes = new HeroAttribute { Strength = baseStrength, Dexterity = baseDexterity, Intelligence = baseIntelligence };
+            LevelUpAttributes = new HeroAttribute { Strength = strengthOnLevelUp, Dexterity = dexterityOnLevelUp, Intelligence = intelligenceOnLevelUp };
             EligibleWeapons = new WeaponType[] { WeaponType.Staff, WeaponType.Wand };
             EligibleArmors = new ArmorType[] { ArmorType.Cloth };
         }

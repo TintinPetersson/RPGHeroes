@@ -6,27 +6,18 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.Attributes
 {
-    enum HeroAttributeType
-    {
-        Strength,
-        Dexterity,
-        Intelligence
-    }
     internal class HeroAttribute
     {
-        public HeroAttributeType Type { get; set; }
-        public int Value { get; set; } = 0;
+        public int Strength { get; set; }
+        public int Dexterity { get; set; }
+        public int Intelligence { get; set; }
 
-        public HeroAttribute(HeroAttributeType type, int value)
-        {
-            Type = type;
-            Value = value;
-        }
 
-        public HeroAttribute(HeroAttribute copy)
+        public void UpdateTotalAttributes(int strength, int dexterity, int intelligence)
         {
-            Type = copy.Type;
-            Value = copy.Value;
+            Strength += strength;
+            Dexterity += dexterity;
+            Intelligence += intelligence;
         }
     }
 }
