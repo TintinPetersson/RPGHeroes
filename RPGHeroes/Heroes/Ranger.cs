@@ -24,7 +24,7 @@ namespace RPGHeroes.Heroes
             Name = name;
             CharacterClass = "Ranger";
 
-            TotalAttributes = new HeroAttribute { Strength = baseStrength, Dexterity = baseDexterity, Intelligence = baseIntelligence };
+            LevelUpAttributes = new HeroAttribute(baseStrength, baseDexterity, baseIntelligence);
             EligibleWeapons = new WeaponType[] { WeaponType.Bow };
             EligibleArmors = new ArmorType[] { ArmorType.Leather, ArmorType.Mail };
             Equipment = new Dictionary<Slot, Item> { { Slot.Weapon, new Weapon() }, { Slot.Body, new Armor() }, { Slot.Head, new Armor() }, { Slot.Legs, new Armor() }, };
@@ -36,7 +36,7 @@ namespace RPGHeroes.Heroes
             Console.WriteLine($"Congratulations {Name}.\nYou reached Level {Level}!\n");
             Console.ResetColor();
 
-            TotalAttributes.UpdateTotalAttributes(strengthOnLevelUp, dexterityOnLevelUp, intelligenceOnLevelUp);
+            LevelUpAttributes.UpdateLevelUpAttributes(strengthOnLevelUp, dexterityOnLevelUp, intelligenceOnLevelUp);
         }
     }
 }

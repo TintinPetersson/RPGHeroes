@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPGHeroes.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,6 @@ namespace RPGHeroes.Items
     internal class Armor : Item
     {
         public ArmorType Type { get; set; }
+        public HeroAttribute ArmorAttribute { get; set; }
     }
 }

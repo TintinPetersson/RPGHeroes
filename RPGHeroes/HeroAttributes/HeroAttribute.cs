@@ -12,8 +12,14 @@ namespace RPGHeroes.Attributes
         public int Dexterity { get; set; }
         public int Intelligence { get; set; }
 
+        public HeroAttribute(int strength, int dexterity, int intelligence)
+        {
+            Strength = strength;
+            Dexterity = dexterity;
+            Intelligence = intelligence;
+        }
 
-        public void UpdateTotalAttributes(int strength, int dexterity, int intelligence)
+        public void UpdateLevelUpAttributes(int strength, int dexterity, int intelligence)
         {
             Strength += strength;
             Dexterity += dexterity;

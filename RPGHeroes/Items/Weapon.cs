@@ -19,6 +19,6 @@ namespace RPGHeroes.Items
     internal class Weapon : Item
     {
         public WeaponType Type { get; set; }
-        public double Damage { get; set; }
+        public double WeaponDamage { get; set; }
     }
 }
