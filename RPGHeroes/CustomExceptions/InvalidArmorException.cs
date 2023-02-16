@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.CustomExceptions
 {
-    internal class InvalidArmorException : Exception
+    public class InvalidArmorException : Exception
     {
         public InvalidArmorException(string problem)
             : base($"Unable to equip armor piece: {problem}")

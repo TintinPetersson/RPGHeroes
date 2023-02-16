@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.Items
 {
-    enum ArmorType
+    public enum ArmorType
     {
         Cloth,
         Leather,
         Mail,
         Plate
     }
-    internal class Armor : Item
+    public class Armor : Item
     {
         public ArmorType Type { get; set; }
         public HeroAttribute ArmorAttribute { get; set; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.Heroes
 {
-    internal class Mage: Hero
+    public class Mage: Hero
     {
         private int baseStrength = 1;
         private int baseDexterity = 1;
@@ -23,7 +23,7 @@ namespace RPGHeroes.Heroes
             Name = name;
             CharacterClass = "Mage";
 
-            LevelUpAttributes = new HeroAttribute (baseStrength, baseDexterity, baseIntelligence);
+            LevelUpAttributes = new HeroAttribute(baseStrength, baseDexterity, baseIntelligence);
             EligibleWeapons = new WeaponType[] { WeaponType.Staff, WeaponType.Wand };
             EligibleArmors = new ArmorType[] { ArmorType.Cloth };
             Equipment = new Dictionary<Slot, Item> { { Slot.Weapon, new Weapon() }, { Slot.Body, new Armor() }, { Slot.Head, new Armor() }, { Slot.Legs, new Armor() }, };

@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace RPGHeroes.Items
 {
-    enum Slot
+    public enum Slot
     {
         Weapon,
         Head,
         Body,
         Legs
     }
-    abstract class Item
+    public abstract class Item
     {
         public string Name { get; set; }
         public int RequiredLevel { get; set; }

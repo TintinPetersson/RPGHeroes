@@ -10,13 +10,13 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace RPGHeroes.Heroes
 {
-    abstract class Hero
+    public abstract class Hero
     {
         public int Level { get; protected set; } = 1;
         protected string Name { get; set; }
         protected string CharacterClass { get; set; }
         public Dictionary<Slot, Item> Equipment { get; set; }
-        protected HeroAttribute LevelUpAttributes { get; set; }
+        public HeroAttribute LevelUpAttributes { get; set; }
         public WeaponType[] EligibleWeapons { get; set; }
         public ArmorType[] EligibleArmors { get; set; }
 
@@ -88,10 +88,10 @@ namespace RPGHeroes.Heroes
 
             if (weapon.Name != null)
             {
-                if(CharacterClass == "Mage") return weaponDPS += weapon.WeaponDamage * (1 + GetTotalAttributes().Intelligence / 100);
-                if (CharacterClass == "Ranger") return weaponDPS += weapon.WeaponDamage * (1 + GetTotalAttributes().Dexterity / 100);
-                if (CharacterClass == "Rogue") return weaponDPS += weapon.WeaponDamage * (1 + GetTotalAttributes().Dexterity / 100);
-                if (CharacterClass == "Warrior") return weaponDPS += weapon.WeaponDamage * (1 + GetTotalAttributes().Strength / 100);
+                if(CharacterClass == "Mage") return weaponDPS += weapon.WeaponDamage * (1 + ((double)GetTotalAttributes().Intelligence / 100));
+                if (CharacterClass == "Ranger") return weaponDPS += weapon.WeaponDamage * (1 + ((double)GetTotalAttributes().Dexterity / 100));
+                if (CharacterClass == "Rogue") return weaponDPS += weapon.WeaponDamage * (1 + ((double)GetTotalAttributes().Dexterity / 100));
+                if (CharacterClass == "Warrior") return weaponDPS += weapon.WeaponDamage * (1 + ((double)GetTotalAttributes().Strength / 100));
             }
             return weaponDPS;
         }

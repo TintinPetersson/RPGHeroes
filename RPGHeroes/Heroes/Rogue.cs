@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace RPGHeroes.Heroes
 {
-    internal class Rogue: Hero
+    public class Rogue: Hero
     {
         private int baseStrength = 2;
         private int baseDexterity = 6;
@@ -24,7 +24,7 @@ namespace RPGHeroes.Heroes
             Name = name;
             CharacterClass = "Rogue";
 
-            LevelUpAttributes = new HeroAttribute (baseStrength, baseDexterity, baseIntelligence);
+            LevelUpAttributes = new HeroAttribute(baseStrength, baseDexterity, baseIntelligence);
             EligibleWeapons = new WeaponType[] { WeaponType.Dagger, WeaponType.Sword };
             EligibleArmors = new ArmorType[] { ArmorType.Leather, ArmorType.Mail };
             Equipment = new Dictionary<Slot, Item> { { Slot.Weapon, new Weapon() }, { Slot.Body, new Armor() }, { Slot.Head, new Armor() }, { Slot.Legs, new Armor() }, };
