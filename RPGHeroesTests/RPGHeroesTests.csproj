@@ -25,4 +25,8 @@
     <ProjectReference Include="..\RPGHeroes\RPGHeroes.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ItemTests\" />
+  </ItemGroup>
+
 </Project>
