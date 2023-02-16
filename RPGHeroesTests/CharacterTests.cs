@@ -27,7 +27,7 @@ namespace RPGHeroesTests
             HeroAttribute expected = new HeroAttribute(1, 1, 8);
 
             // Act
-            HeroAttribute actual = mage.LevelUpAttributes;
+            HeroAttribute actual = mage.GetTotalAttributes();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -48,7 +48,7 @@ namespace RPGHeroesTests
             Assert.Equal(expected, actual);
         }
         [Fact]
-        public void LevelUp_CallOnMage_ShouldIncreaseAttributesAppropriately()
+        public void LevelUp_CallOnMage_ShouldIncreaseAttributesAppropriatelyOnLevelUp()
         {
             // Arrange
             Mage mage = new Mage("Mage");
@@ -56,7 +56,7 @@ namespace RPGHeroesTests
 
             // Act
             mage.LevelUp();
-            HeroAttribute actual = mage.LevelUpAttributes;
+            HeroAttribute actual = mage.GetTotalAttributes();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -85,7 +85,7 @@ namespace RPGHeroesTests
             HeroAttribute expected = new HeroAttribute(1, 7, 1);
 
             // Act
-            HeroAttribute actual = ranger.LevelUpAttributes;
+            HeroAttribute actual = ranger.GetTotalAttributes();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -106,7 +106,7 @@ namespace RPGHeroesTests
             Assert.Equal(expected, actual);
         }
         [Fact]
-        public void LevelUp_CallOnRanger_ShouldIncreaseAttributesAppropriately()
+        public void LevelUp_CallOnRanger_ShouldIncreaseAttributesAppropriatelyOnLevelUp()
         {
             // Arrange
             Ranger ranger = new Ranger("Ranger");
@@ -114,7 +114,7 @@ namespace RPGHeroesTests
 
             // Act
             ranger.LevelUp();
-            HeroAttribute actual = ranger.LevelUpAttributes;
+            HeroAttribute actual = ranger.GetTotalAttributes();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -142,7 +142,7 @@ namespace RPGHeroesTests
             HeroAttribute expected = new HeroAttribute(2, 6, 1);
 
             // Act
-            HeroAttribute actual = rogue.LevelUpAttributes;
+            HeroAttribute actual = rogue.GetTotalAttributes();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -163,7 +163,7 @@ namespace RPGHeroesTests
             Assert.Equal(expected, actual);
         }
         [Fact]
-        public void LevelUp_CallOnRogue_ShouldIncreaseAttributesAppropriately()
+        public void LevelUp_CallOnRogue_ShouldIncreaseAttributesAppropriatelyOnLevelUp()
         {
             // Arrange
             Rogue rogue = new Rogue("Rogue");
@@ -171,7 +171,7 @@ namespace RPGHeroesTests
 
             // Act
             rogue.LevelUp();
-            HeroAttribute actual = rogue.LevelUpAttributes;
+            HeroAttribute actual = rogue.GetTotalAttributes();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -200,7 +200,7 @@ namespace RPGHeroesTests
             HeroAttribute expected = new HeroAttribute(5, 2, 1);
 
             // Act
-            HeroAttribute actual = warrior.LevelUpAttributes;
+            HeroAttribute actual = warrior.GetTotalAttributes();
 
             // Assert
             Assert.Equal(expected, actual);
@@ -221,7 +221,7 @@ namespace RPGHeroesTests
             Assert.Equal(expected, actual);
         }
         [Fact]
-        public void LevelUp_CallOnWarrior_ShouldIncreaseAttributesAppropriately()
+        public void LevelUp_CallOnWarrior_ShouldIncreaseAttributesAppropriatelyOnLevelUp()
         {
             // Arrange
             Warrior warrior = new Warrior("Warrior");
@@ -229,7 +229,7 @@ namespace RPGHeroesTests
 
             // Act
             warrior.LevelUp();
-            HeroAttribute actual = warrior.LevelUpAttributes;
+            HeroAttribute actual = warrior.GetTotalAttributes();
 
             // Assert
             Assert.Equal(expected, actual);
