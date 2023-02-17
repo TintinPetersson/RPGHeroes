@@ -1,13 +1,8 @@
-﻿using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using RPGHeroes.Attributes;
+﻿using RPGHeroes.Attributes;
 using RPGHeroes.CustomExceptions;
 using RPGHeroes.Heroes;
 using RPGHeroes.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace RPGHeroesTests.ItemTests
 {
@@ -21,7 +16,7 @@ namespace RPGHeroesTests.ItemTests
             Weapon testAxe = new Weapon { Name = "Test Axe", RequiredLevel = 2, Slot = Slot.Weapon, Type = WeaponType.Axe, WeaponDamage = 30.5 };
 
             // Act & Assert
-            Assert.Throws<InvalidWeaponException>((() => testWarrior.EquipWeapon(testAxe)));
+            Assert.Throws<InvalidWeaponException>(() => testWarrior.EquipWeapon(testAxe));
         }
 
         [Fact]
@@ -32,7 +27,7 @@ namespace RPGHeroesTests.ItemTests
             Armor testPlateBody = new Armor { Name = "Common plate body armor", RequiredLevel = 2, Slot = Slot.Body, Type = ArmorType.Plate, ArmorAttribute = new HeroAttribute(1, 0, 0) };
 
             // Act & Assert
-            Assert.Throws<InvalidArmorException>((() => testWarrior.EquipArmor(testPlateBody)));
+            Assert.Throws<InvalidArmorException>(() => testWarrior.EquipArmor(testPlateBody));
         }
 
         [Fact]
@@ -43,7 +38,7 @@ namespace RPGHeroesTests.ItemTests
             Weapon testBow = new Weapon { Name = "Common bow", RequiredLevel = 1, Type = WeaponType.Bow, Slot = Slot.Weapon , WeaponDamage = 12.0 };
 
             // Act & Assert
-            Assert.Throws<InvalidWeaponException>((() => testWarrior.EquipWeapon(testBow)));
+            Assert.Throws<InvalidWeaponException>(() => testWarrior.EquipWeapon(testBow));
         }
 
         [Fact]
@@ -54,7 +49,7 @@ namespace RPGHeroesTests.ItemTests
             Armor testClothHead = new Armor { Name = "Common Cloth", RequiredLevel = 1, Slot = Slot.Body, Type = ArmorType.Cloth, ArmorAttribute = new HeroAttribute(1, 0, 0) };
 
             // Act & Assert
-            Assert.Throws<InvalidArmorException>((() => testWarrior.EquipArmor(testClothHead)));
+            Assert.Throws<InvalidArmorException>(() => testWarrior.EquipArmor(testClothHead));
         }
 
         [Fact]

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RPGHeroes.Heroes;
-
-namespace RPGHeroes.Attributes
+﻿namespace RPGHeroes.Attributes
 {
     public class HeroAttribute
     {
