@@ -137,11 +137,10 @@ namespace RPGHeroesTests.ItemTests
         {
             // Arrange
             Warrior testWarrior = new Warrior("Warrior");
-
-            HeroAttribute expected = new HeroAttribute(5, 2, 1);
+            HeroAttribute expected = testWarrior.GetTotalAttributes();
 
             // Act
-            HeroAttribute actual = testWarrior.GetTotalAttributes();
+            HeroAttribute actual = new HeroAttribute(5, 2, 1);
 
             // Assert
             Assert.Equivalent(expected, actual);
