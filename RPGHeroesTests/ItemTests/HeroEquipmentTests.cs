@@ -132,5 +132,90 @@ namespace RPGHeroesTests.ItemTests
             // Assert
             Assert.Equal(expected, actual);
         }
+        [Fact]
+        public void NoItemEquipped_CallOnGetAttributes_ShouldDisplayCorrectAttributes()
+        {
+            // Arrange
+            Warrior testWarrior = new Warrior("Warrior");
+
+            HeroAttribute expected = new HeroAttribute(5, 2, 1);
+
+            // Act
+            HeroAttribute actual = testWarrior.GetTotalAttributes();
+
+            // Assert
+            Assert.Equivalent(expected, actual);
+        }
+        [Fact]
+        public void EquipItem_CallOnValidOnePieceOfArmor_ShouldDisplayCorrectAttributes()
+        {
+            // Arrange
+            Warrior testWarrior = new Warrior("Warrior");
+            Armor testPlateBody = new Armor { Name = "Common plate body armor", RequiredLevel = 1, Slot = Slot.Body, Type = ArmorType.Plate, ArmorAttribute = new HeroAttribute(2, 0, 0) };
+            testWarrior.EquipArmor(testPlateBody);
+
+            HeroAttribute expected = new HeroAttribute(5 + 2, 2, 1);
+
+            // Act
+            HeroAttribute actual = testWarrior.GetTotalAttributes();
+
+            // Assert
+            Assert.Equivalent(expected, actual);
+        }
+        [Fact]
+        public void EquipItem_CallOnValidTwoPiecesOfArmor_ShouldDisplayCorrectAttributes()
+        {
+            // Arrange
+            Warrior testWarrior = new Warrior("Warrior");
+            Armor testPlateBody = new Armor { Name = "Common plate body armor", RequiredLevel = 1, Slot = Slot.Body, Type = ArmorType.Plate, ArmorAttribute = new HeroAttribute(2, 0, 0) };
+            Armor testPlateHelmet = new Armor { Name = "Common plate helmet", RequiredLevel = 1, Slot = Slot.Head, Type = ArmorType.Plate, ArmorAttribute = new HeroAttribute(1, 0, 0) };
+            testWarrior.EquipArmor(testPlateBody);
+            testWarrior.EquipArmor(testPlateHelmet);
+
+            HeroAttribute expected = new HeroAttribute(5 + 3 , 2, 1);
+
+            // Act
+            HeroAttribute actual = testWarrior.GetTotalAttributes();
+
+            // Assert
+            Assert.Equivalent(expected, actual);
+        }
+        [Fact]
+        public void EquipItem_CallOnValidArmor_ShouldDisplayCorrectAttributesAfterSwitchingArmorOnSameSlot()
+        {
+            // Arrange
+            Warrior testWarrior = new Warrior("Warrior");
+            Armor testPlateBody = new Armor { Name = "Common plate body armor", RequiredLevel = 1, Slot = Slot.Body, Type = ArmorType.Plate, ArmorAttribute = new HeroAttribute(2, 0, 0) };
+            Armor testPlateBodySecond = new Armor { Name = "Superior plate body armor", RequiredLevel = 1, Slot = Slot.Body, Type = ArmorType.Plate, ArmorAttribute = new HeroAttribute(1, 0, 0) };
+            testWarrior.EquipArmor(testPlateBody);
+            testWarrior.EquipArmor(testPlateBodySecond);
+
+            HeroAttribute expected = new HeroAttribute(5 + 1, 2, 1);
+
+            // Act
+            HeroAttribute actual = testWarrior.GetTotalAttributes();
+
+            // Assert
+            Assert.Equivalent(expected, actual);
+        }
+        [Fact]
+        public void EquipItem_CallOnValidWeapon_ShouldDisplayCorrectDamageAfterSwitchingWeapon()
+        {
+            // Arrange
+            Warrior testWarrior = new Warrior("Warrior");
+            Weapon testAxeFirst = new Weapon { Name = "Test Axe", RequiredLevel = 1, Slot = Slot.Weapon, Type = WeaponType.Axe, WeaponDamage = 5 };
+            Weapon testAxeSecond = new Weapon { Name = "Test Axe Superior", RequiredLevel = 1, Slot = Slot.Weapon, Type = WeaponType.Axe, WeaponDamage = 7 };
+
+            testWarrior.EquipWeapon(testAxeFirst);
+            testWarrior.EquipWeapon(testAxeSecond);
+
+            double expected = 7 * (1 + (5  / 100.0));
+
+            // Act
+            double actual = testWarrior.Damage();
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }
