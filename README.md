@@ -12,6 +12,6 @@
 
 - Functions to calculate Damage, Equip a Weapon, Equip a Armor piece, Level Up and to Display all of the attributes of a Hero.
 
-- 35 Unit tests to test functionality of each of the above mentioned methods and classes.
+- Unit tests to test functionality of each of the above mentioned methods and classes.
 
 Enjoy!
