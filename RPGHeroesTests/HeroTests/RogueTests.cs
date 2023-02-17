@@ -34,7 +34,7 @@ namespace RPGHeroesTests.CharacterTests
             HeroAttribute actual = rogue.GetTotalAttributes();
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.Equivalent(expected, actual);
         }
         [Fact]
         public void LevelUp_CallOnNewRogue_ShouldIncreaseLevelToTwo()
@@ -63,7 +63,7 @@ namespace RPGHeroesTests.CharacterTests
             HeroAttribute actual = rogue.GetTotalAttributes();
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.Equivalent(expected, actual);
         }
     }
 }

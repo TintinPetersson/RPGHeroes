@@ -26,19 +26,5 @@ namespace RPGHeroes.Attributes
             Dexterity += dexterity;
             Intelligence += intelligence;
         }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
-            {
-                return false;
-            }
-            if (!(obj is HeroAttribute))
-            {
-                return false;
-            }
-
-            return Strength == this.Strength && Dexterity == this.Dexterity && Intelligence == this.Intelligence;
-        }
     }
 }

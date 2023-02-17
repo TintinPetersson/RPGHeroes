@@ -9,10 +9,13 @@ Console.WriteLine(newMage.Display());
 newMage.LevelUp();
 newMage.LevelUp();
 
-newMage.EquipWeapon(WeaponType.Staff, Slot.Weapon, 2, "Basic Staff", 22.5);
-newMage.EquipArmor(ArmorType.Cloth, Slot.Head, 1, "Cloth Hat", new HeroAttribute(1, 1, 4));
-newMage.EquipArmor(ArmorType.Cloth, Slot.Body, 1, "Cloth Robe", new HeroAttribute(1, 1, 8));
-newMage.EquipArmor(ArmorType.Cloth, Slot.Legs, 1, "Cloth Pants", new HeroAttribute(1, 2, 8));
+Console.ForegroundColor = ConsoleColor.Yellow;
+Console.WriteLine(newMage.EquipWeapon(new Weapon { Type = WeaponType.Staff, Slot = Slot.Weapon, RequiredLevel = 2, Name = "Basic Staff", WeaponDamage = 22.5 }));
+Console.WriteLine(newMage.EquipArmor(new Armor { Type = ArmorType.Cloth, Slot = Slot.Head, RequiredLevel = 1, Name = "Cloth Hat", ArmorAttribute = new HeroAttribute(1, 1, 4) }));
+Console.WriteLine(newMage.EquipArmor(new Armor { Type = ArmorType.Cloth, Slot = Slot.Body, RequiredLevel = 1, Name = "Cloth Robe", ArmorAttribute = new HeroAttribute(1, 1, 2) }));
+Console.WriteLine(newMage.EquipArmor(new Armor { Type = ArmorType.Cloth, Slot = Slot.Legs, RequiredLevel = 1, Name = "Cloth Tights", ArmorAttribute = new HeroAttribute(1, 1, 7) }));
+Console.WriteLine("\n");
+Console.ResetColor();
 
 foreach (var item in newMage.Equipment)
 {

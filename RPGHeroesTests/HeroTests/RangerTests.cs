@@ -34,7 +34,7 @@ namespace RPGHeroesTests.CharacterTests
             HeroAttribute actual = ranger.GetTotalAttributes();
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.Equivalent(expected, actual);
         }
         [Fact]
         public void LevelUp_CallOnNewRanger_ShouldIncreaseLevelToTwo()
@@ -63,7 +63,7 @@ namespace RPGHeroesTests.CharacterTests
             HeroAttribute actual = ranger.GetTotalAttributes();
 
             // Assert
-            Assert.Equal(expected, actual);
+            Assert.Equivalent(expected, actual);
         }
     }
 }

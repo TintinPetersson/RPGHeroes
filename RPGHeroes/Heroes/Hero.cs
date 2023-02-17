@@ -22,44 +22,40 @@ namespace RPGHeroes.Heroes
 
 
         public abstract void LevelUp();
-        public void EquipWeapon(WeaponType weapon, Slot slot, int requiredLevel, string name, double damage)
+        public string EquipWeapon(Weapon weapon)
         {
-            if (!EligibleWeapons.Contains(weapon))
+            if (!EligibleWeapons.Contains(weapon.Type))
             {
                 throw new InvalidWeaponException(CharacterClass + "cannot equip this weapon type.");
             }
-            if (Level < requiredLevel)
+            if (Level < weapon.RequiredLevel)
             {
                 throw new InvalidWeaponException("Hero's level is not high enough.");
             }
 
-            var newWeapon = new Weapon { Name = name, RequiredLevel = requiredLevel, Slot = Slot.Weapon, Type = weapon, WeaponDamage = damage };
-            Equipment.Remove(slot);
-            Equipment.Add(slot, newWeapon);
+            var newWeapon = new Weapon { Name = weapon.Name, RequiredLevel = weapon.RequiredLevel, Slot = Slot.Weapon, Type = weapon.Type, WeaponDamage = weapon.WeaponDamage };
+            Equipment.Remove(weapon.Slot);
+            Equipment.Add(weapon.Slot, newWeapon);
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("New Weapon Equipped!\n");
-            Console.ResetColor();
+            return "New Weapon Equipped!";
         }
-        public void EquipArmor(ArmorType armor, Slot slot, int requiredLevel, string name, HeroAttribute attributes)
+        public string EquipArmor(Armor armor)
         {
-            if (!EligibleArmors.Contains(armor))
+            if (!EligibleArmors.Contains(armor.Type))
             {
                 throw new InvalidArmorException("Character cannot equip this armor type.");
             }
-            if (Level < requiredLevel)
+            if (Level < armor.RequiredLevel)
             {
                 throw new InvalidArmorException("Character's level is not high enough.");
             }
 
-            var newArmor = new Armor { Name = name, RequiredLevel = requiredLevel, Slot = Slot.Weapon, Type = armor, ArmorAttribute = attributes };
+            var newArmor = new Armor { Name = armor.Name, RequiredLevel = armor.RequiredLevel, Slot = Slot.Weapon, Type = armor.Type, ArmorAttribute = armor.ArmorAttribute };
 
-            Equipment.Remove(slot);
-            Equipment.Add(slot, newArmor);
+            Equipment.Remove(armor.Slot);
+            Equipment.Add(armor.Slot, newArmor);
 
-            Console.ForegroundColor= ConsoleColor.Yellow;
-            Console.WriteLine("New Armor Equipped!\n");
-            Console.ResetColor();
+            return "New Armor Equipped!";
         }
         public HeroAttribute GetTotalAttributes()
         {
@@ -80,7 +76,7 @@ namespace RPGHeroes.Heroes
 
             return totalAttributes;
         }
-        private double Damage()
+        public double Damage()
         {
             double weaponDPS = 1;
 
@@ -88,11 +84,16 @@ namespace RPGHeroes.Heroes
 
             if (weapon.Name != null)
             {
-                if(CharacterClass == "Mage") return weaponDPS += weapon.WeaponDamage * (1 + ((double)GetTotalAttributes().Intelligence / 100));
-                if (CharacterClass == "Ranger") return weaponDPS += weapon.WeaponDamage * (1 + ((double)GetTotalAttributes().Dexterity / 100));
-                if (CharacterClass == "Rogue") return weaponDPS += weapon.WeaponDamage * (1 + ((double)GetTotalAttributes().Dexterity / 100));
-                if (CharacterClass == "Warrior") return weaponDPS += weapon.WeaponDamage * (1 + ((double)GetTotalAttributes().Strength / 100));
+                if(CharacterClass == "Mage") return weapon.WeaponDamage * (1 + ((double)GetTotalAttributes().Intelligence / 100));
+                if (CharacterClass == "Ranger") return weapon.WeaponDamage * (1 + ((double)GetTotalAttributes().Dexterity / 100));
+                if (CharacterClass == "Rogue") return weapon.WeaponDamage * (1 + ((double)GetTotalAttributes().Dexterity / 100));
+                if (CharacterClass == "Warrior") return weapon.WeaponDamage * (1 + ((double)GetTotalAttributes().Strength / 100));
             }
+            if (CharacterClass == "Mage") return weaponDPS + ((double)GetTotalAttributes().Intelligence / 100);
+            if (CharacterClass == "Ranger") return weaponDPS + ((double)GetTotalAttributes().Dexterity / 100);
+            if (CharacterClass == "Rogue") return weaponDPS + ((double)GetTotalAttributes().Dexterity / 100);
+            if (CharacterClass == "Warrior") return weaponDPS + ((double)GetTotalAttributes().Strength / 100);
+
             return weaponDPS;
         }
         public string Display()
